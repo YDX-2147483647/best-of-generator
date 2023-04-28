@@ -5,6 +5,7 @@ from best_of.integrations import (
     cargo_integration,
     conda_integration,
     dockerhub_integration,
+    gitee_integration,
     gitlab_integration,
     go_integration,
     maven_integration,
@@ -24,6 +25,7 @@ AVAILABLE_PACKAGE_MANAGER: List[base_integration.BaseIntegration] = [
     dockerhub_integration.DockerhubIntegration(),
     cargo_integration.CargoIntegration(),
     go_integration.GoIntegration(),
+    gitee_integration.GiteeIntegration(),
     greasy_fork_integration.GreasyForkIntegration(),
 ]
 
