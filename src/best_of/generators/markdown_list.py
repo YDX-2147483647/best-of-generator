@@ -187,7 +187,7 @@ def generate_license_info(project: Dict, configuration: Dict) -> Tuple[str, int]
                     licenses_warning = license_metadata.warning
 
         if licenses_warning and not configuration.hide_license_risk:
-            licenses_name = "❗️" + licenses_name
+            licenses_name = "❗️&nbsp;" + licenses_name
 
         license_length = len(licenses_name)
         # target="_blank"
@@ -197,7 +197,7 @@ def generate_license_info(project: Dict, configuration: Dict) -> Tuple[str, int]
         if configuration.hide_license_risk:
             license_md += " <code>Unlicensed</code>"
         else:
-            license_md += " <code>❗Unlicensed</code>"
+            license_md += " <code>❗&nbsp;Unlicensed</code>"
     return " ·" + license_md, license_length
 
 
