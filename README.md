@@ -261,6 +261,10 @@ Every project can also be expanded to show additional project information (by cl
         <td>Gitee ID of the project based on user or organization and the repository name, e.g. <code>best-of-lists/best-of-generator</code>. You can <a href='https://gitee.com/profile/personal_access_tokens/new'>generate an access token</a> and set option <code>--gitee-key</code>.</td>
     </tr>
     <tr>
+        <td><code>codeberg_id</code></td>
+        <td>Codeberg ID of the project based on user or organization and the repository name, e.g. <code>best-of-lists/best-of-generator</code>. Note that you have to specify project licenses manually, as Codeberg API does not provide them.</td>
+    </tr>
+    <tr>
         <td><code>greasy_fork_id</code></td>
         <td>Greasy Fork ID of the project. This is the number in script's URL, e.g. <code>299792458</code> for <code>https://greasyfork.org/scripts/299792458-speed-of-light</code>. If set, homepage and description on Greasy Fork will take precedence over those on GitHub.</td>
     </tr>

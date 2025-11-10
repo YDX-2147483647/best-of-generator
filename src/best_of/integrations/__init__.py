@@ -3,6 +3,7 @@ from typing import List
 from best_of.integrations import (
     base_integration,
     cargo_integration,
+    codeberg_integration,
     conda_integration,
     dockerhub_integration,
     gitee_integration,
@@ -18,6 +19,7 @@ from best_of.integrations import (
 
 AVAILABLE_PACKAGE_MANAGER: List[base_integration.BaseIntegration] = [
     pypi_integration.PypiIntegration(),
+    codeberg_integration.CodebergIntegration(),
     gitlab_integration.GitLabIntegration(),
     conda_integration.CondaIntegration(),
     npm_integration.NpmIntegration(),
