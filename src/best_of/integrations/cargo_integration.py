@@ -31,7 +31,12 @@ class CargoIntegration(BaseIntegration):
         try:
             request = requests.get(
                 "https://crates.io/api/v1/crates/"
-                + quote(project_info.cargo_id, safe="")
+                + quote(project_info.cargo_id, safe=""),
+                headers={
+                    # Data Access Policy requires a user-agent header containing contact info.
+                    # https://crates.io/data-access#api
+                    "user-agent": "https://github.com/YDX-2147483647/best-of-generator/blob/best-of-bits/src/best_of/integrations/cargo_integration.py"
+                },
             )
             request.text
             if request.status_code != 200:
