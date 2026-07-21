@@ -29,7 +29,9 @@ class GreasyForkIntegration(BaseIntegration):
             params = Dict()
 
             response = requests.get(
-                f"{project_info.greasy_fork_url}.json",
+                # As of 2026-07, greasyfork.org is usually 403 Forbidden because of
+                # the Cloudflare Challenge, while api.greasyfork.org is okay.
+                f"https://api.greasyfork.org/scripts/{project_info.greasy_fork_id}.json",
                 params=params,
             )
             response.raise_for_status()
