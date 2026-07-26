@@ -133,9 +133,7 @@ query($owner: String!, $repo: String!, $since_recent_activity: GitTimestamp!) {
     licenseInfo {
       spdxId
     }
-    stargazers {
-      totalCount
-    }
+    stargazerCount
     pullRequests {
       totalCount
     }
@@ -217,6 +215,9 @@ query($owner: String!, $repo: String!, $since_recent_activity: GitTimestamp!) {
             )
             return None
         response_data = response.json()
+
+        if response_data.get("errors"):
+            log.warning(f"Request returned with errors: {response_data['errors']}")
 
         if "data" not in response_data:
             log.info("Request returned unexpected data: " + str(response_data))
@@ -388,8 +389,8 @@ def update_via_github_api(project_info: Dict) -> None:
             # always use the highest number
             project_info.closed_issue_count = closed_issue_count
 
-    if github_info.stargazers and github_info.stargazers.totalCount:
-        star_count = int(github_info.stargazers.totalCount)
+    if github_info.stargazerCount:
+        star_count = int(github_info.stargazerCount)
         if not project_info.star_count:
             project_info.star_count = star_count
         elif int(project_info.star_count) < star_count:
